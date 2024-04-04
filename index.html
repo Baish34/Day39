@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+</head>
+
+<body>
+
+  <label for="textInput">What is a JavaScript?:</label>
+  <textarea id="textInput" rows="4" cols="30"> </textarea>
+  <button id="textBtn">Display Answer</button>
+  <button id="countBtn">Count Words</button>
+  <p id="textResult"></p>
+  <br>
+  <label for="todoInput">List Todos:</label>
+  <textarea id="todoInput" rows="4" cols="30"> </textarea>
+  <button id="todoBtn">Display Todos</button>
+  <button id="countTodoBtn">Count Todos</button>
+  <p id="todoResult"></p>
+  <br>
+  <label for="passwordInput">Enter password:</label>
+  <input id="passwordInput" />
+  <button id="passwordBtn">Display Password</button>
+  <button id="checkBtn">Check Password</button>
+  <p id="passwordResult"></p>
+
+
+  <script>
+    const textInput = document.querySelector("#textInput")
+    const textBtn = document.querySelector("#textBtn")
+    const textResult = document.querySelector("#textResult")
+    const countBtn = document.querySelector("#countBtn")
+
+    let text;
+
+    textBtn.addEventListener("click", function () {
+      text = textInput.value
+      textResult.style.color = "black"
+      textResult.textContent = `Your Answer: ${text}`
+    })
+
+    countBtn.addEventListener("click", function () {
+      const words = text.split(" ")
+      const wordCount = words.length;
+      if (wordCount <= 7) {
+        textResult.style.color = "green"
+        textResult.innerHTML = `Your Answer: ${text} <br><br> Good.`
+      } else if (wordCount > 7) {
+        textResult.style.color = "red"
+        textResult.innerHTML = `Your Answer: ${text} <br><br> Word count excedding.`
+
+      }
+
+    })
+
+    const todoInput = document.querySelector("#todoInput")
+    const todoBtn = document.querySelector("#todoBtn")
+    const todoResult = document.querySelector("#todoResult")
+    const countTodoBtn = document.querySelector("#countTodoBtn")
+
+    let todo;
+
+    todoBtn.addEventListener("click", function () {
+      todo = todoInput.value
+      todoResult.style.color = "black"
+      todoResult.textContent = `Your Todos: ${todo}`
+    })
+
+    countTodoBtn.addEventListener("click", function () {
+      const sentence = todoInput.value
+      const count = sentence.split(',')
+      const countWord = count.length
+      todoResult.style.color = "green"
+      todoResult.textContent = `Total number of todos: ${countWord}`
+    })
+
+    const passwordInput = document.querySelector("#passwordInput")
+    const passwordBtn = document.querySelector("#passwordBtn")
+    const passwordResult = document.querySelector("#passwordResult")
+    const checkBtn = document.querySelector("#checkBtn")
+
+    let password;
+
+    passwordBtn.addEventListener("click", function () {
+      password = passwordInput.value
+      passwordResult.style.color = "black"
+      passwordResult.textContent = `Your Password: ${password}`
+    })
+
+    checkBtn.addEventListener("click", function () {
+      if (password.length > 5 && (password.includes("@") || password.includes("!") || password.includes("$"))) {
+        passwordResult.style.color = "green"
+        passwordResult.textContent = "Password Accepted."
+      } else {
+        passwordResult.style.color = "red"
+        passwordResult.textContent = "Invalid Password. Password should be more than 5 characters and must contain @ or ! or $ symbol."
+      }
+    })
+  </script>
+</body>
+
+</html>
